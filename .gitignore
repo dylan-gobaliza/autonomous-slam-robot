@@ -1,0 +1,16 @@
+# Python virtual environments & cache
+__pycache__/
+*.pyc
+.venv/
+env/
+
+# Arduino / C++ build files
+.pio/
+build/
+*.elf
+*.hex
+
+# Operating System temporary files
+.DS_Store
+Thumbs.db
+desktop.ini
