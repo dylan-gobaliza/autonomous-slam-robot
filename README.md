@@ -44,3 +44,5 @@ This project develops an **ultra-low-cost (~£37.50) autonomous 2WD recon platfo
 
 ## Log / Progress
 * **[11/09/26]:** Created repo structure, familiarised myself with Github workflow, and set up development environment. I found it really cool how you can commit straight from VS Code into Github and it saves a lot of time!
+
+* **[12/09/26]:** Created notes.md for raw notes and progression, also started pygame in main.py. Looked briefly over the basic kinematics and math of how the robot works
