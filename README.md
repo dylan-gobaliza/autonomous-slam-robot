@@ -46,3 +46,5 @@ This project develops an **ultra-low-cost (~£37.50) autonomous 2WD recon platfo
 * **[11/09/26]:** Created repo structure, familiarised myself with Github workflow, and set up development environment. I found it really cool how you can commit straight from VS Code into Github and it saves a lot of time!
 
 * **[12/09/26]:** Created notes.md for raw notes and progression, also started pygame in main.py. Looked briefly over the basic kinematics and math of how the robot works
+
+* **[13/09/26]:** Worked mainly on my iPad, I couldnt understand the math for how to simulate raycasting in python so i worked backwards and managed to prove it! I learnt the formula for the total ray angle and the trig behind raycasting. Honestly it's extremely simple maths it's just the actual concept of what's happening took like 2-3 hours
