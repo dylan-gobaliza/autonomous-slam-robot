@@ -29,11 +29,11 @@ These iPad sketches verify the vector math and show how pure geometry translates
 #### Total Ray Angle Derivation
 *Proving how local sensor sweep angles offset from the robot's body heading.*
 
-![Total Ray Angle Proof](assets\total_ray_angle_proof.jpeg)
+![Total Ray Angle Proof](assets/total_ray_angle_proof.jpeg)
 
 #### Raycasting & SOH CAH TOA Derivation
 *Proving vector resolution using right-angled triangles to find collision coordinates.*
 
-![Raycasting Trig Proof](assets\raycast_derivation.jpeg)
+![Raycasting Trig Proof](assets/raycast_derivation.jpeg)
 
 ---
