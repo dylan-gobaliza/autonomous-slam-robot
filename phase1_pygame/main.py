@@ -21,6 +21,7 @@ turn_speed = 2.5
 robot_x = 500
 robot_y = 350
 robot_radius = 10
+line_length = 20
 
 # rays
 FOV = 90.0
@@ -47,14 +48,21 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-# --- B. INPUT & ROBOT MOVEMENT ---
+# robot movement and radian conversion
     key = pygame.key.get_pressed()
     if key[pygame.K_a]:
         robot_angle -= turn_speed
     if key[pygame.K_d]:
         robot_angle += turn_speed
-    # TODO: Convert robot_angle to radians using math.radians()
-    # TODO: Update robot_x and robot_y along cos/sin vectors when 'W' or 'S' is pressed
+
+    rad = math.radians(robot_angle) # convert to radians so that trig can be used
+
+    if key[pygame.K_w]:
+        robot_x += robot_speed * math.cos(rad) # change in x = speed * cos(theta)
+        robot_y += robot_speed * math.sin(rad) # change in y = speed * sin(theta)
+    if key[pygame.K_s]:
+        robot_x -= robot_speed * math.cos(rad)
+        robot_y -= robot_speed * math.sin(rad)
 
 
     # --- C. SENSOR CALCULATIONS & MAP UPDATES ---
@@ -75,7 +83,8 @@ while running:
 
 
     # --- D. RENDERING (BOTTOM TO TOP) ---
-    # TODO: Clear screen with background color
+    # change screen colour
+    screen.fill((30, 30, 30))
     
     # TODO: Draw obstacles (loop through rect list)
     
@@ -83,7 +92,17 @@ while running:
     
     # TODO: Draw active sonar rays (loop through temporary ray end points and draw lines)
     
-    # TODO: Draw robot body (circle) and heading line (line in direction of angle)
+    # draw robot and heading line (blue circle)
+    head_x = robot_x + line_length * math.cos(rad)
+    head_y = robot_y + line_length * math.sin(rad)
+
+    pygame.draw.circle(screen, (0, 150, 255), (robot_x, robot_y), robot_radius)
+    pygame.draw.line(screen, (225, 225, 225), (robot_x, robot_y), (head_x, head_y), 2)
+
+
+    # refresh display & limit to 60 frames per second
+    pygame.display.flip()
+    clock.tick(60)
 
 # quit Pygame cleanly
 pygame.quit()
