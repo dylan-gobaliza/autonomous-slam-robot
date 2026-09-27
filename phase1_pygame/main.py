@@ -65,9 +65,11 @@ while running:
         robot_y -= robot_speed * math.sin(rad)
 
 
-    # --- C. SENSOR CALCULATIONS & MAP UPDATES ---
-    # TODO: Create a temporary list to hold ray end points for rendering this frame
-    # TODO: Calculate start_angle (robot_angle - FOV/2) and angle_step across NUM_RAYS
+# --- C. SENSOR CALCULATIONS & MAP UPDATES ---
+    ray_end_points = [] # holds all ray end points for one loop, and then repeats frame after frame 
+
+    start_ray = robot_angle - (FOV / 2) # finds angle of very first ray to the left of robot
+    angle_step = FOV / (NUM_RAYS - 1) # calculates angle distance between each ray
     
     # TODO: Loop through each of the 15 rays:
     #   1. Compute ray angle in radians
