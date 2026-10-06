@@ -3,22 +3,28 @@ import sys
 import math
 
 pygame.init()
+pygame.font.init()
 
-# set up the game window
-screen = pygame.display.set_mode((1000, 700))
-pygame.display.set_caption("pygame sim - phase 1")
+# set up dual-view window dimensions
+VIEW_WIDTH = 900
+SCREEN_HEIGHT = 700
+SCREEN_WIDTH = VIEW_WIDTH * 2
+
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption("Pygame Sim - Dual-View Mapping (Ground Truth vs Robot Map)")
 
 clock = pygame.time.Clock()
+font = pygame.font.SysFont("Consolas", 18, bold=True)
 
 # ------------------------------------------------------------
 
 # movement speeds
 robot_angle = 0.0
-robot_speed = 3.0
+robot_speed = 2.5
 turn_speed = 2.5
 
 # robot position
-robot_x = 500
+robot_x = 450
 robot_y = 350
 robot_radius = 10
 line_length = 20
@@ -112,21 +118,55 @@ while running:
 
 
     # --- D. RENDERING (BOTTOM TO TOP) ---
+    
     # change screen colour
     screen.fill((30, 30, 30))
-        
-    for pt_x, pt_y in point_cloud:
-        pygame.draw.circle(screen, (255, 50, 50), (int(pt_x), int(pt_y)), 1)
-        
-    for end_x, end_y in ray_endpoints:
-        pygame.draw.line(screen, (0, 255, 100), (int(robot_x), int(robot_y)), (int(end_x), int(end_y)), 1)
-    
-    # draw robot and heading line (blue circle)
+
     head_x = robot_x + line_length * math.cos(rad)
     head_y = robot_y + line_length * math.sin(rad)
 
-    pygame.draw.circle(screen, (0, 150, 255), (robot_x, robot_y), robot_radius)
-    pygame.draw.line(screen, (225, 225, 225), (robot_x, robot_y), (head_x, head_y), 2)
+    # LEFT PANEL: GROUND TRUTH VIEW (WORLD)
+
+    # 1. Draw Obstacles
+    for rect in obstacles:
+        pygame.draw.rect(screen, (60, 60, 75), rect)
+
+    # 2. Draw Point Cloud on Left Side
+    for pt_x, pt_y in point_cloud:
+        pygame.draw.circle(screen, (255, 50, 50), (int(pt_x), int(pt_y)), 1)
+
+    # 3. Draw Active Sonar Rays
+    for end_x, end_y in ray_endpoints:
+        pygame.draw.line(screen, (0, 255, 100), (int(robot_x), int(robot_y)), (int(end_x), int(end_y)), 1)
+
+    # 4. Draw Robot Body & Heading Line
+    pygame.draw.circle(screen, (0, 150, 255), (int(robot_x), int(robot_y)), robot_radius)
+    pygame.draw.line(screen, (225, 225, 225), (int(robot_x), int(robot_y)), (int(head_x), int(head_y)), 2)
+
+    # RIGHT PANEL: ROBOT'S GENERATED MAP (RViz View)
+
+    # 1. Draw Point Cloud shifted by VIEW_WIDTH (+1000px)
+    for pt_x, pt_y in point_cloud:
+        pygame.draw.circle(screen, (255, 50, 50), (int(pt_x) + VIEW_WIDTH, int(pt_y)), 1)
+
+    # 2. Draw Robot Position on Map View
+    right_robot_x = int(robot_x) + VIEW_WIDTH
+    right_head_x = int(head_x) + VIEW_WIDTH
+    pygame.draw.circle(screen, (0, 150, 255), (right_robot_x, int(robot_y)), robot_radius)
+    pygame.draw.line(screen, (225, 225, 225), (right_robot_x, int(robot_y)), (right_head_x, int(head_y)), 2)
+
+
+    # ============================================================
+    # HUD / OVERLAYS & DIVIDER
+    # ============================================================
+    # Vertical Dividing Line
+    pygame.draw.line(screen, (100, 100, 100), (VIEW_WIDTH, 0), (VIEW_WIDTH, SCREEN_HEIGHT), 3)
+
+    # Header Labels
+    left_label = font.render("[ GROUND TRUTH WORLD ]", True, (200, 200, 200))
+    right_label = font.render("[ ROBOT OCCUPANCY MAP ]", True, (200, 200, 200))
+    screen.blit(left_label, (20, 15))
+    screen.blit(right_label, (VIEW_WIDTH + 20, 15))
 
 
     # refresh display & limit to 60 frames per second
