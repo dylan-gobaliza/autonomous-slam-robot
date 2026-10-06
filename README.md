@@ -45,10 +45,10 @@ This project develops an **ultra-low-cost (~£37.50) autonomous 2WD recon platfo
 ## Log / Progress
 * **[11/09/26]:** Created repo structure, familiarised myself with Github workflow, and set up development environment. I found it really cool how you can commit straight from VS Code into Github and it saves a lot of time!
 
-* **[12/09/26]:** Created notes.md for raw notes and progression, also started pygame in main.py. Looked briefly over the basic kinematics and math of how the robot works
+* **[12/09/26]:** Created notes.md for raw notes and progression, also started pygame in main_manual.py. Looked briefly over the basic kinematics and math of how the robot works
 
 * **[13/09/26]:** Worked mainly on my iPad, I couldnt understand the math for how to simulate raycasting in python so i worked backwards and managed to prove it! I learnt the formula for the total ray angle and the trig behind raycasting. Honestly it's extremely simple maths it's just the actual concept of what's happening took like 2-3 hours! Also found out apparently this is A-level maths and Year 1 uni level so props to me
 
-* **[27/09/26]:** Had 15 minutes to work on main.py, created and understood math for how to calculate the sonar beams' start angle and the angle distance between the 15 rays.
+* **[27/09/26]:** Had 15 minutes to work on main_manual.py, created and understood math for how to calculate the sonar beams' start angle and the angle distance between the 15 rays.
 
-* **[06/10/26]:** Worked for about an hour or two, finalised first draft of main.py and went through all the formulas / math again 
+* **[06/10/26]:** Worked for about an hour or two, finalised first draft of main_manual.py and went through all the formulas / math again 
