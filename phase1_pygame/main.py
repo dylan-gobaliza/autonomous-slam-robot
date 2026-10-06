@@ -66,33 +66,60 @@ while running:
 
 
 # --- C. SENSOR CALCULATIONS & MAP UPDATES ---
-    ray_end_points = [] # holds all ray end points for one loop, and then repeats frame after frame 
+    ray_endpoints = [] # holds all ray end points for one loop, and then repeats frame after frame 
 
-    start_ray = robot_angle - (FOV / 2) # finds angle of very first ray to the left of robot
+    start_angle = robot_angle - (FOV / 2) # finds angle of very first ray to the left of robot
     angle_step = FOV / (NUM_RAYS - 1) # calculates angle distance between each ray
     
-    # TODO: Loop through each of the 15 rays:
-    #   1. Compute ray angle in radians
-    #   2. Compute max-range end coordinates (end_x, end_y) using trig
-    #   3. Check ray collision against all obstacle rects (e.g., rect.clipline())
-    #   4. Find the closest hit point along the ray
-    #   5. IF hit:
-    #        - Append hit point to temporary ray list
-    #        - Snap hit point using GRID_RES
-    #        - Add snapped tuple to persistent point cloud set
-    #      ELSE:
-    #        - Append max-range end point to temporary ray list
+    for i in range(NUM_RAYS):
+        ray_angle_deg = start_angle + (i * angle_step) # finds the actual angle for each ray
+        ray_angle = math.radians(ray_angle_deg) # converts to radians
+
+        maximum_x = robot_x + MAX_RANGE * math.cos(ray_angle) # draws on 'MAX_RANGE' pixels out from robots position (robot_x, math.cos(rayangle))
+        maximum_y = robot_y + MAX_RANGE * math.sin(ray_angle)
+
+        ray_line = ((robot_x, robot_y), (maximum_x, maximum_y)) # line of the ray
+        closest_hit = None
+        min_distance = MAX_RANGE
+
+        for rect in obstacles:
+            hit = rect.clipline(ray_line)
+
+            if hit:
+                entry_x, entry_y = hit[0] # calls the first tuple pair (where the line first hit the obstacle) and assigns it to entry variables
+                distance = math.hypot(entry_x - robot_x, entry_y - robot_y) # see assets/distance_formula
+
+                if distance < min_distance:
+                    # assigns the co-ordinates and distance to new values if needed
+                    min_distance = distance 
+                    closest_hit = (entry_x, entry_y)
+  
+        if closest_hit:
+            hit_x, hit_y = closest_hit
+            
+            # 1. Append to current frame's ray rendering list
+            ray_endpoints.append((hit_x, hit_y))
+            
+            # 2. Snap to grid resolution
+            snapped_x = round(hit_x / GRID_RES) * GRID_RES
+            snapped_y = round(hit_y / GRID_RES) * GRID_RES
+            
+            # 3. Add to persistent map set
+            point_cloud.add((snapped_x, snapped_y))
+        else:
+            # No obstacle hit — ray extends to full range
+            ray_endpoints.append((maximum_x, maximum_y))
 
 
     # --- D. RENDERING (BOTTOM TO TOP) ---
     # change screen colour
     screen.fill((30, 30, 30))
-    
-    # TODO: Draw obstacles (loop through rect list)
-    
-    # TODO: Draw persistent point cloud (loop through point set and draw tiny circles)
-    
-    # TODO: Draw active sonar rays (loop through temporary ray end points and draw lines)
+        
+    for pt_x, pt_y in point_cloud:
+        pygame.draw.circle(screen, (255, 50, 50), (int(pt_x), int(pt_y)), 1)
+        
+    for end_x, end_y in ray_endpoints:
+        pygame.draw.line(screen, (0, 255, 100), (int(robot_x), int(robot_y)), (int(end_x), int(end_y)), 1)
     
     # draw robot and heading line (blue circle)
     head_x = robot_x + line_length * math.cos(rad)
