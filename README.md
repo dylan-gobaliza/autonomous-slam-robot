@@ -1,13 +1,18 @@
-# Low-Cost Sonar-Based SLAM Robot
+# Budget Sonar-Based SLAM Robot
 
-Building an autonomous 2WD indoor mapping platform for the **Arkwright Engineering Scholarship**. 
+Building an autonomous 2WD indoor mapping robot for the **Arkwright Engineering Scholarship**. 
 
-Instead of using expensive LiDAR or mounting multiple static sensors, this project uses a single **HC-SR04 ultrasonic sonar sensor** mounted on an **SG90 servo motor** executing dynamic 180-degree acoustic sweeps.
+Instead of using expensive LiDAR or mounting multiple static sensors, this project uses a single **HC-SR04 ultrasonic sonar sensor** mounted on an **SG90 servo motor** to execute dynamic 180-degree acoustic sweeps.
 
 ---
 
 ### The Challenge: High-Risk Indoor Reconnaissance
-In urban defense, search-and-rescue, and disaster response, entering unknown or structurally compromised buildings carries extreme human risk. While military-grade Reconnaissance UGVs exist, their high cost (£10,000–£50,000+) makes them too expensive to risk in high-attrition scenarios. Furthermore, heavy smoke, dust, or obscurants can render optical cameras and LiDAR units ineffective due to light scattering.
+In urban defense, search-and-rescue and disaster response situations, entering unknown or structurally compromised buildings carries an extreme human risk. While military-grade Reconnaissance UGVs exist, their high cost (£10,000–£50,000+) makes them too expensive to risk in high-attrition scenarios. Furthermore, heavy smoke, dust, or obscurants can render optical cameras and LiDAR units ineffective due to light scattering.
+
+### Case Study Grounding: Grenfell Tower & Subterranean Reconnaissance
+During complex indoor structure fires (such as Grenfell Tower, 2017) and confined urban operations, search-and-rescue teams face zero-visibility environments created by heavy smoke and particulate dust. Standard optical cameras and visual LiDAR systems fail in these conditions due to light scattering. Furthermore, deploying high-cost reconnaissance robots (£10k+) into structurally compromised spaces risks total loss of critical assets. 
+
+This project addresses this gap by utilizing low-cost acoustic sonar on an expendable £37.50 platform to map spatial boundaries where optical vision fails.
 
 ### The Solution: Expendable Acoustic Mapping (Sonar UGV)
 This project develops an **ultra-low-cost (~£37.50) autonomous 2WD recon platform** designed for expendable indoor mapping:
@@ -52,3 +57,5 @@ This project develops an **ultra-low-cost (~£37.50) autonomous 2WD recon platfo
 * **[27/09/26]:** Had 15 minutes to work on main_manual.py, created and understood math for how to calculate the sonar beams' start angle and the angle distance between the 15 rays.
 
 * **[06/10/26]:** Worked for about an hour or two, finalised first draft of main_manual.py and went through all the formulas / math again 
+
+* **[24/10/26]:** 
