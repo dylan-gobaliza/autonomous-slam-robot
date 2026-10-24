@@ -23,8 +23,8 @@ This project develops an **ultra-low-cost (~£37.50) autonomous 2WD recon platfo
 
 ## Target Bill of Materials (BOM) & Budget
 * Arduino Uno R3 Kit (~£23)
+* ESP32 (FREE - utilised AliExpress deal) 
 * HC-SR04 Sonar + SG90 Servo (~£4.00)
-* HC-05 Bluetooth (~£2.00)
 * HC-020K Speed Sensors / Encoders (~£2.00)
 
 * Starter Commercial Chassis -- for testing hardware and identifying flaws when using non-specific templates (~£6.50)
@@ -52,10 +52,14 @@ This project develops an **ultra-low-cost (~£37.50) autonomous 2WD recon platfo
 
 * **[12/09/26]:** Created notes.md for raw notes and progression, also started pygame in main_manual.py. Looked briefly over the basic kinematics and math of how the robot works
 
-* **[13/09/26]:** Worked mainly on my iPad, I couldnt understand the math for how to simulate raycasting in python so i worked backwards and managed to prove it! I learnt the formula for the total ray angle and the trig behind raycasting. Honestly it's extremely simple maths it's just the actual concept of what's happening took like 2-3 hours! Also found out apparently this is A-level maths and Year 1 uni level so props to me
+* **[13/09/26]:** Worked mainly on my iPad, I couldnt understand the math for how to simulate raycasting in python so i worked backwards and managed to prove it! I learnt the formula for the total ray angle and the trig behind raycasting. Honestly it's extremely simple maths it's just the actual concept of what's happening took like 2-3 hours! Also found out apparently this is A-level maths and Year 1 university level so props to me
 
 * **[27/09/26]:** Had 15 minutes to work on main_manual.py, created and understood math for how to calculate the sonar beams' start angle and the angle distance between the 15 rays.
 
 * **[06/10/26]:** Worked for about an hour or two, finalised first draft of main_manual.py and went through all the formulas / math again 
 
-* **[24/10/26]:** 
+* **[24/10/26]:** Completed main_automatic.py, ran into some bugs but fixed them eventually. Planning on moving to v3 which will include OOP to simulate the ROS2 architecture.
+
+Updated README project description to add in case studies, and updated some of the BOM. Still wondering what I need to purchase in the future, but I'm trying to utilise the AliExpress welcome deals as much as possible.
+
+Also did more research on how Arkwright Assessors look at projects and how they grade them, gave me insight on what i should implement in my own project to secure as many marks as possible
