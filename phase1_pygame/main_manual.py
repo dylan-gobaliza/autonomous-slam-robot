@@ -71,7 +71,7 @@ while running:
         robot_y -= robot_speed * math.sin(rad)
 
 
-# --- C. SENSOR CALCULATIONS & MAP UPDATES ---
+# --- SENSOR CALCULATIONS & MAP UPDATES ---
     ray_endpoints = [] # holds all ray end points for one loop, and then repeats frame after frame 
 
     start_angle = robot_angle - (FOV / 2) # finds angle of very first ray to the left of robot
@@ -117,7 +117,7 @@ while running:
             ray_endpoints.append((maximum_x, maximum_y))
 
 
-    # --- D. RENDERING (BOTTOM TO TOP) ---
+    # --- RENDERING (BOTTOM TO TOP) ---
     
     # change screen colour
     screen.fill((30, 30, 30))
