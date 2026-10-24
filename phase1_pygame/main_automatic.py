@@ -1,6 +1,7 @@
 import pygame
 import sys
 import math
+import random
 
 pygame.init()
 pygame.font.init()
@@ -118,11 +119,12 @@ while running:
 
     # 1. Trapped check (backup)
     if front_clearance < CRITICAL_DISTANCE or (front_clearance < SAFETY_DISTANCE and left_clearance < SAFETY_DISTANCE and right_clearance < SAFETY_DISTANCE):
+        nudge = random.uniform(-0.5, 0.5)
         robot_speed = -1.5
         if left_clearance > right_clearance:
-            robot_angle -= turn_speed * 1.5
+            robot_angle -= (turn_speed * 1.5) + nudge
         else:
-            robot_angle += turn_speed * 1.5
+            robot_angle += (turn_speed * 1.5) + nudge
             
     # 2. Blocked directly in front
     elif front_clearance < SAFETY_DISTANCE:
