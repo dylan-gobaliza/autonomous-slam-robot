@@ -1,0 +1,10 @@
+import math, pygame 
+
+class robot:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+        self.angle = 0.0
+        self.speed = 2.5
+        self.turn_speed = 2.5
