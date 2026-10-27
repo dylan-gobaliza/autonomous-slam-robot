@@ -37,15 +37,15 @@ MAX_RANGE = 350.0
 
 
 point_cloud = set()    # set() prevents duplicate points
-GRID_RES = 2           # Snaps hit points to a 2px grid
+GRID_RES = 2           # snaps hit points to a 2px grid
 
 # obstacles creation
 obstacles = [
     
-    pygame.Rect(0, 0, VIEW_WIDTH, 10),         # Top Wall
-    pygame.Rect(0, SCREEN_HEIGHT - 10, VIEW_WIDTH, 10), # Bottom Wall
-    pygame.Rect(0, 0, 10, SCREEN_HEIGHT),      # Left Wall
-    pygame.Rect(VIEW_WIDTH - 10, 0, 10, SCREEN_HEIGHT), # Right Wall (Middle Divider)
+    pygame.Rect(0, 0, VIEW_WIDTH, 10),         # top wall
+    pygame.Rect(0, SCREEN_HEIGHT - 10, VIEW_WIDTH, 10), # bottom wall
+    pygame.Rect(0, 0, 10, SCREEN_HEIGHT),      # left wall
+    pygame.Rect(VIEW_WIDTH - 10, 0, 10, SCREEN_HEIGHT), # right wall (Middle Divider)
     
     pygame.Rect(150, 100, 120, 300),
     pygame.Rect(700, 200, 150, 250),
@@ -93,15 +93,15 @@ while running:
   
         if closest_hit:
             hit_x, hit_y = closest_hit
-            
-            # 1. Append to current frame's ray rendering list
+
+            # i. Append to current frame's ray rendering list
             ray_endpoints.append((hit_x, hit_y))
             
-            # 2. Snap to grid resolution
+            # ii. Snap to grid resolution
             snapped_x = round(hit_x / GRID_RES) * GRID_RES
             snapped_y = round(hit_y / GRID_RES) * GRID_RES
             
-            # 3. Add to persistent map set
+            # iii. Add to persistent map set
             point_cloud.add((snapped_x, snapped_y))
         else:
             # No obstacle hit — ray extends to full range
@@ -117,7 +117,7 @@ while running:
     SAFETY_DISTANCE = 70.0
     CRITICAL_DISTANCE = 40.0
 
-    # 1. Trapped check (backup)
+    # i. Trapped check (backup)
     if front_clearance < CRITICAL_DISTANCE or (front_clearance < SAFETY_DISTANCE and left_clearance < SAFETY_DISTANCE and right_clearance < SAFETY_DISTANCE):
         nudge = random.uniform(-0.5, 0.5)
         robot_speed = -1.5
@@ -126,7 +126,7 @@ while running:
         else:
             robot_angle += (turn_speed * 1.5) + nudge
             
-    # 2. Blocked directly in front
+    # ii. Blocked directly in front
     elif front_clearance < SAFETY_DISTANCE:
         robot_speed = 0.0
         if left_clearance > right_clearance:
@@ -134,12 +134,12 @@ while running:
         else:
             robot_angle += turn_speed
             
-    # 3. LOOKING INTO A GAP / CORRIDOR: If front is deep/clear, ignore side walls and drive in!
+    # iii. LOOKING INTO A GAP / CORRIDOR: If front is deep/clear, ignore side walls and drive in!
     elif front_clearance > 120:
         robot_speed = 2.0
         # No side-steering here, let it drive straight through the entrance
 
-    # 4. Normal open space wall correction
+    # iv. Normal open space wall correction
     else:
         robot_speed = 2.0
         if left_clearance < SAFETY_DISTANCE / 2:
@@ -149,8 +149,14 @@ while running:
 
     # Update position
     rad = math.radians(robot_angle)
-    robot_x += robot_speed * math.cos(rad)
-    robot_y += robot_speed * math.sin(rad)
+    
+    drift_x = random.uniform(-0.1, 0.1)
+    drift_y = random.uniform(-0.1, 0.1)
+    heading_drift = random.uniform(-0.2, 0.2)
+
+    robot_x += (robot_speed * math.cos(rad)) + drift_x
+    robot_y += (robot_speed * math.sin(rad)) + drift_y
+    robot_angle += heading_drift
 
     # Boundary clamp
     robot_x = max(robot_radius + 10, min(VIEW_WIDTH - robot_radius - 10, robot_x))
