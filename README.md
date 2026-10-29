@@ -59,5 +59,9 @@ This project develops an **ultra-low-cost (~£37.50) autonomous 2WD recon platfo
 * **[06/10/26]:** Worked for about an hour or two, finalised first draft of main_manual.py and went through all the formulas / math again 
 
 * **[24/10/26]:** Completed main_automatic.py, ran into some bugs but fixed them eventually. Planning on moving to v3 which will include OOP to simulate the ROS2 architecture. \
+\
 Updated README project description to add in case studies, and updated some of the BOM. Still wondering what I need to purchase in the future, but I'm trying to utilise the AliExpress welcome deals as much as possible. \
+\
 Also did more research on how Arkwright Assessors look at projects and how they grade them, gave me insight on what i should implement in my own project to secure as many marks as possible
+
+* **[27/10/26]:** Finished v2_automatic and added random blurs to simulate sensor noise. Also renamed the python files to make them more readable. Started on v3 which is the final part of phase 1. v3 utilises object oriented programming which ultimately helps with the ROS2 workflow. Also created a separate folder for the OOP files.
