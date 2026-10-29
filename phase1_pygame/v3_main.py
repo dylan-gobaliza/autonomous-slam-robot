@@ -14,7 +14,7 @@ SCREEN_HEIGHT = 700
 SCREEN_WIDTH = VIEW_WIDTH * 2
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Pygame Sim - OOP Refactor (v3)")
+pygame.display.set_caption("Pygame Sim - OOP Automatic (v3)")
 
 clock = pygame.time.Clock()
 font = pygame.font.SysFont("Consolas", 18, bold=True)
