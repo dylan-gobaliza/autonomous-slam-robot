@@ -24,12 +24,14 @@ This project develops an **ultra-low-cost (~£37.50) autonomous 2WD recon platfo
 ## Target Bill of Materials (BOM) & Budget
 * Arduino Uno R3 Kit (~£23)
 * ESP32 (FREE - utilised AliExpress deal) 
+
 * HC-SR04 Sonar + SG90 Servo (~£4.00)
 * HC-020K Speed Sensors / Encoders (~£2.00)
 
-* Starter Commercial Chassis -- for testing hardware and identifying flaws when using non-specific templates (~£6.50)
-
-* Chassis: Custom CAD Chassis, laser-cut from recycled school scrap acrylic (£0.00)
+* Starter Commercial Chassis 2WD -- for testing hardware and identifying flaws when using non-specific templates (~£6.50)
+* TB6612FNG Motor Driver
+* wire pack
+* 18650 battery holder
 
 * **Total Target Cost: ~£37.50**
 * **Equivalent 2D LiDAR Platform (Estimated):** **~£160.00 – £200.00**
@@ -40,10 +42,10 @@ This project develops an **ultra-low-cost (~£37.50) autonomous 2WD recon platfo
 
 * **[x] Term 1 (Y10): Phase 1 — Pygame Simulation Sandbox (Pure Math & 2D Kinematics)**
   * Build 2D software environment to develop understanding of robot kinematics and sonar raycasting math. Also develop simple logic for automation. 
-* **[ ] Term 2 (Y10): Phase 2 — 3D Physics & Circuit Simulation (Wokwi & Webots)**
-  * Simulate the robot within Webots accounting for sensor noise, physics, etc. Use Wokwi to virtually validate circuit. Identify flaws with commercial chassis and begin development of CAD chassis.
+* **[x] Term 2 (Y10): Phase 2 — 3D Physics & Circuit Simulation (Webots + ROS2, Circuit Schematics and Validation - Wokwi, KiCAD)**
+  * Simulate the robot within Webots and ROS2 accounting for sensor noise, physics, etc. Use Wokwi to virtually validate circuit. Use a circuit schematic builder e.g KiCAD to remove all guesswork in phase 3.
 * **[ ] Term 3/4 (Y10/Y11): Phase 3 — Hardware Fabrication & Wireless SLAM**
-  * Assembly of harvested motors on laser-cut scrap acrylic, Arduino C++ firmware deployment, and HC-05 Bluetooth SLAM telemetry.
+  * Assembly of robot on pre-made chassis
 
 ---
 
