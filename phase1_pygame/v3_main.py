@@ -13,20 +13,19 @@ VIEW_WIDTH = 900
 SCREEN_HEIGHT = 700
 SCREEN_WIDTH = VIEW_WIDTH * 2
 
-screen = pygame.display.set_mode((VIEW_WIDTH * 2, SCREEN_HEIGHT))
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Pygame Sim - OOP Refactor (v3)")
-clock = pygame.time.Clock()
 
-# Font for HUD headers
+clock = pygame.time.Clock()
 font = pygame.font.SysFont("Consolas", 18, bold=True)
 
 # Instantiate objects
 robot = Robot(300, 250)
 world = World(VIEW_WIDTH, SCREEN_HEIGHT)
 
-FOV = 60
+FOV = 90
 NUM_RAYS = 15
-MAX_RANGE = 250
+MAX_RANGE = 350.0
 
 # Main Game Loop
 while True:

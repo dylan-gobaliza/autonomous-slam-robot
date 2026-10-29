@@ -57,11 +57,18 @@ class World:
 
         return ray_endpoints
 
-    def draw(self, screen):
+    def draw_ground_truth(self, screen):
+        for rect in self.obstacles:
+            pygame.draw.rect(screen, (60, 60, 75), rect)
+        
+        for pt_x, pt_y in self.point_cloud:
+            pygame.draw.circle(screen, (255, 50, 50), (int(pt_x), int(pt_y)), 1)
+
+    def draw_occupancy_map(self, screen, offset_x):
         # Draw obstacles
         for rect in self.obstacles:
             pygame.draw.rect(screen, (60, 60, 75), rect)
         
         # Draw point cloud map
-        for pt in self.point_cloud:
-            pygame.draw.circle(screen, (255, 75, 75), pt, 1)
+        for pt_x, pt_y in self.point_cloud:
+            pygame.draw.circle(screen, (255, 50, 50), (int(pt_x) + offset_x, int(pt_y)), 1)
