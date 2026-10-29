@@ -1,6 +1,6 @@
 import math, pygame 
 
-class robot: 
+class Robot: 
     def __init__(self, x, y):
         # assign variables
         self.x = x
