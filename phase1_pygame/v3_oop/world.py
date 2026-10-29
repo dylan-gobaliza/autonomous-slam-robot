@@ -9,9 +9,16 @@ class World:
         
         # obstacles matching your v2 layout
         self.obstacles = [
-            pygame.Rect(150, 150, 60, 180),
-            pygame.Rect(350, 320, 90, 140),
-            pygame.Rect(250, 50, 120, 70)
+
+            pygame.Rect(0, 0, 900, 10),         # top wall
+            pygame.Rect(0, 700 - 10, 900, 10), # bottom wall
+            pygame.Rect(0, 0, 10, 700),      # left wall
+            pygame.Rect(900 - 10, 0, 10, 700), # right wall (Middle Divider)
+
+            pygame.Rect(150, 100, 120, 300),
+            pygame.Rect(700, 200, 150, 250),
+            pygame.Rect(400, 500, 250, 100),
+
         ]
         
         self.point_cloud = set()

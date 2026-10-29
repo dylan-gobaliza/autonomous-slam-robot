@@ -26,4 +26,4 @@ class Robot:
         
         end_x = self.x + (self.radius * 1.5) * math.cos(rad)
         end_y = self.y + (self.radius * 1.5) * math.sin(rad)
-        pygame.draw.line(screen, (255, 255, 255), (int(self.x) + offset_x, int(self.y)), (int(end_x), int(end_y)), 2)
+        pygame.draw.line(screen, (255, 255, 255), (int(self.x) + offset_x, int(self.y)), (int(end_x) + offset_x, int(end_y)), 2)
