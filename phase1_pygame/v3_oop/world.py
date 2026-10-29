@@ -5,7 +5,7 @@ class World:
     def __init__(self, width, height):
         self.width = width
         self.height = height
-        self.grid_res = 8
+        self.grid_res = 2
         
         # obstacles matching your v2 layout
         self.obstacles = [
@@ -69,7 +69,7 @@ class World:
             pygame.draw.rect(screen, (60, 60, 75), rect)
         
         for pt_x, pt_y in self.point_cloud:
-            pygame.draw.circle(screen, (255, 50, 50), (int(pt_x), int(pt_y)), 1)
+            pygame.draw.circle(screen, (255, 50, 50), (int(pt_x), int(pt_y)), 2)
 
     def draw_occupancy_map(self, screen, offset_x):
         # Draw obstacles
@@ -78,4 +78,4 @@ class World:
         
         # Draw point cloud map
         for pt_x, pt_y in self.point_cloud:
-            pygame.draw.circle(screen, (255, 50, 50), (int(pt_x) + offset_x, int(pt_y)), 1)
+            pygame.draw.circle(screen, (255, 50, 50), (int(pt_x) + offset_x, int(pt_y)), 2)
