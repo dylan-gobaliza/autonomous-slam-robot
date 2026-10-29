@@ -67,3 +67,5 @@ Updated README project description to add in case studies, and updated some of t
 Also did more research on how Arkwright Assessors look at projects and how they grade them, gave me insight on what i should implement in my own project to secure as many marks as possible
 
 * **[27/10/26]:** Finished v2_automatic and added random blurs to simulate sensor noise. Also renamed the python files to make them more readable. Started on v3 which is the final part of phase 1. v3 utilises object oriented programming which ultimately helps with the ROS2 workflow. Also created a separate folder for the OOP files.
+
+* **[29/10/26]:** Finished Phase 1 (2 months early!), updated BOM and did lots of research on next steps, i.e how does ROS2 work, what softwares are the best for circuit schematics and testing, what robot chassis I should get etc. Might start working on Phase 2 in the meantime.
