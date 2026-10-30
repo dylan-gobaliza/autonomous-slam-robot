@@ -99,7 +99,7 @@ while True:
     robot.draw(screen, offset_x=0)
 
     # ============================================================
-    # RIGHT PANEL: ROBOT'S GENERATED MAP (RViz View)
+    # RIGHT PANEL: ROBOT'S GENERATED MAP
     # ============================================================
     world.draw_occupancy_map(screen, VIEW_WIDTH)
     

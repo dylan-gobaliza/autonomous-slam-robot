@@ -8,8 +8,8 @@ class Robot:
 
         self.radius = 10
         self.angle = 0.0
-        self.speed = 2.5
-        self.turn_speed = 2.5
+        self.speed = 5.0
+        self.turn_speed = 5.0
 
     def move(self): 
         rad = math.radians(self.angle)
