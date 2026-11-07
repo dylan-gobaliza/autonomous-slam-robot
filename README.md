@@ -24,18 +24,20 @@ This project develops an **ultra-low-cost (~£37.50) autonomous 2WD recon platfo
 ## Target Bill of Materials (BOM) & Budget
 * Arduino Uno R3 Kit (~£23)
 * ESP32 (FREE - utilised AliExpress deal) 
-
+-
 * HC-SR04 Sonar + SG90 Servo (£2.78)
 * 2x HC-020K Speed Sensors / Encoders (£2.07)
-
-* Starter Commercial Chassis 2WD -- for testing hardware and identifying flaws when using non-specific templates (£3.98)
+-
+* Starter Commercial Chassis 2WD -- testing hardware and identifying flaws when using pre-made templates (£3.98)
 * TB6612FNG Motor Driver (£1.88)
 * Wires (U-Shaped + M-F Pack) - (£2.35)
 
-* **Target Budget: ~£50.00**
-* **TRUE COST: £36.06** 
+---
 
+* **Target Budget: ~£50.00**
 * **Equivalent 2D LiDAR Platform (Estimated):** **~£160.00 – £200.00**
+
+* **TRUE COST: £36.06** 
 
 ---
 
