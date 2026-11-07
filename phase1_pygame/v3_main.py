@@ -23,6 +23,7 @@ font = pygame.font.SysFont("Consolas", 18, bold=True)
 robot = Robot(300, 250)
 world = World(VIEW_WIDTH, SCREEN_HEIGHT)
 
+backup_counter = 0
 FOV = 90
 NUM_RAYS = 15
 MAX_RANGE = 350.0
@@ -33,6 +34,8 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+
+    keys = pygame.key.get_pressed()
 
     # 1. Cast Rays using World
     ray_endpoints = world.cast_rays(robot.x, robot.y, robot.angle, FOV, NUM_RAYS, MAX_RANGE)
@@ -58,34 +61,49 @@ while True:
     SAFETY_DISTANCE = 70.0
     CRITICAL_DISTANCE = 40.0
 
+    # Hold SPACEBAR for manual override control
+    if keys[pygame.K_SPACE]:
+        robot.speed = 0.0
+        if keys[pygame.K_w]:
+            robot.speed = 2.5
+        if keys[pygame.K_s]:
+            robot.speed = -1.5
+        if keys[pygame.K_a]:
+            robot.angle -= robot.turn_speed
+        if keys[pygame.K_d]:
+            robot.angle += robot.turn_speed
+    else:
     # i. Trapped check (backup)
-    if front_clearance < CRITICAL_DISTANCE or (front_clearance < SAFETY_DISTANCE and left_clearance < SAFETY_DISTANCE and right_clearance < SAFETY_DISTANCE):
-        nudge = random.uniform(-0.5, 0.5)
-        robot.speed = -1.5
-        if left_clearance > right_clearance:
-            robot.angle -= (robot.turn_speed * 1.5) + nudge
-        else:
-            robot.angle += (robot.turn_speed * 1.5) + nudge
+        if front_clearance < CRITICAL_DISTANCE or (front_clearance < SAFETY_DISTANCE and left_clearance < SAFETY_DISTANCE and right_clearance < SAFETY_DISTANCE):
+            nudge = random.uniform(-0.5, 0.5)
+            robot.speed = -1.5
+            if abs(left_clearance - right_clearance) < 15:
+                breakout = random.choice([-1, 1])
+                robot.angle += ((robot.turn_speed * 1.5) + nudge) * breakout
+            elif left_clearance > right_clearance + 15:
+                robot.angle -= ((robot.turn_speed * 1.5) + nudge) * 1.5
+            else:
+                robot.angle += ((robot.turn_speed * 1.5) + nudge) * 1.5
             
     # ii. Blocked directly in front
-    elif front_clearance < SAFETY_DISTANCE:
-        robot.speed = 0.0
-        if left_clearance > right_clearance:
-            robot.angle -= robot.turn_speed
-        else:
-            robot.angle += robot.turn_speed
+        elif front_clearance < SAFETY_DISTANCE:
+            robot.speed = 0.0
+            if left_clearance > right_clearance + 15:
+                robot.angle -= robot.turn_speed
+            else:
+                robot.angle += robot.turn_speed
             
     # iii. LOOKING INTO A GAP / CORRIDOR
-    elif front_clearance > 120:
-        robot.speed = 2.5
+        elif front_clearance > 120:
+            robot.speed = 2.5
 
     # iv. Normal open space wall correction
-    else:
-        robot.speed = 2.0
-        if left_clearance < SAFETY_DISTANCE / 2:
-            robot.angle += robot.turn_speed / 2
-        elif right_clearance < SAFETY_DISTANCE / 2:
-            robot.angle -= robot.turn_speed / 2
+        else:
+            robot.speed = 2.0
+            if left_clearance < SAFETY_DISTANCE / 2:
+                robot.angle += robot.turn_speed / 2
+            elif right_clearance < SAFETY_DISTANCE / 2:
+                robot.angle -= robot.turn_speed / 2
 
     # 3. Update Robot Movement Position
     robot.move()
