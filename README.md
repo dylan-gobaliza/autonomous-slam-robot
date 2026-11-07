@@ -24,13 +24,13 @@ This project develops an **ultra-low-cost (~£37.50) autonomous 2WD recon platfo
 ## Target Bill of Materials (BOM) & Budget
 * Arduino Uno R3 Kit (~£23)
 * ESP32 (FREE - utilised AliExpress deal) 
--
+* Wires (U-Shaped + M-F Pack) - (£2.35)
+
 * HC-SR04 Sonar + SG90 Servo (£2.78)
 * 2x HC-020K Speed Sensors / Encoders (£2.07)
--
-* Starter Commercial Chassis 2WD -- testing hardware and identifying flaws when using pre-made templates (£3.98)
 * TB6612FNG Motor Driver (£1.88)
-* Wires (U-Shaped + M-F Pack) - (£2.35)
+  
+* Starter 2WD Commercial Chassis  -- testing hardware and identifying flaws when using pre-made templates (£3.98)
 
 ---
 
@@ -72,3 +72,5 @@ Also did more research on how Arkwright Assessors look at projects and how they 
 * **[27/10/26]:** Finished v2_automatic and added random blurs to simulate sensor noise. Also renamed the python files to make them more readable. Started on v3 which is the final part of phase 1. v3 utilises object oriented programming which ultimately helps with the ROS2 workflow. Also created a separate folder for the OOP files.
 
 * **[29/10/26]:** Finished Phase 1 (2 months early!), updated BOM and did lots of research on next steps, i.e how does ROS2 work, what softwares are the best for circuit schematics and testing, what robot chassis I should get etc. Might start working on Phase 2 in the meantime.
+
+* **[07/11/26]:** Revised Phase 1 by adding fuzziness to the GUI, fixed sensor noise. Bought the rest of the components for the robot and finished BOM. Downloaded Linux and I might start on the webots + ROS2 downloads. If not, I'll start the schematics on KiCAD and start validating circuitry. Might have to watch some videos on circuits and robots first though. 
