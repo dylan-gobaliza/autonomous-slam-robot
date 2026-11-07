@@ -40,9 +40,20 @@ while True:
     # 2. AUTONOMOUS REACTIVE STEERING LOGIC
     ray_distances = [math.hypot(ex - robot.x, ey - robot.y) for ex, ey in ray_endpoints]
     
-    left_clearance = min(ray_distances[0:5])
-    front_clearance = min(ray_distances[5:10])
-    right_clearance = min(ray_distances[10:15])
+    rays = len(ray_endpoints)
+    thirds = rays // 3
+
+    left_rays = ray_endpoints[:thirds]
+    center_rays = ray_endpoints[thirds:2*thirds]
+    right_rays = ray_endpoints[2*thirds:]
+
+    def get_min_dist(rays):
+        if not rays: return MAX_RANGE
+        return min(math.hypot(ex - robot.x, ey - robot.y) for ex, ey in rays)
+
+    left_clearance = get_min_dist(left_rays)
+    front_clearance = get_min_dist(center_rays)
+    right_clearance = get_min_dist(right_rays)
 
     SAFETY_DISTANCE = 70.0
     CRITICAL_DISTANCE = 40.0
@@ -66,7 +77,7 @@ while True:
             
     # iii. LOOKING INTO A GAP / CORRIDOR
     elif front_clearance > 120:
-        robot.speed = 2.0
+        robot.speed = 2.5
 
     # iv. Normal open space wall correction
     else:
