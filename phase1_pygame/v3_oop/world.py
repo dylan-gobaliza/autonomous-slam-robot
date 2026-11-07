@@ -56,12 +56,9 @@ class World:
             if closest_hit:
                 hit_x, hit_y = closest_hit
                 ray_endpoints.append((hit_x, hit_y))
-
-                noisy_x = hit_x + random.uniform(-3.0, 3.0)
-                noisy_y = hit_y + random.uniform(-3.0, 3.0)
                 
-                snapped_x = round(noisy_x / self.grid_res) * self.grid_res
-                snapped_y = round(noisy_y / self.grid_res) * self.grid_res
+                snapped_x = round(hit_x / self.grid_res) * self.grid_res
+                snapped_y = round(hit_y / self.grid_res) * self.grid_res
                 self.point_cloud.add((snapped_x, snapped_y))
             else:
                 ray_endpoints.append((maximum_x, maximum_y))
@@ -73,9 +70,13 @@ class World:
             pygame.draw.rect(screen, (60, 60, 75), rect)
         
         for pt_x, pt_y in self.point_cloud:
-            pygame.draw.circle(screen, (255, 50, 50), (int(pt_x), int(pt_y)), 2)
+            pygame.draw.circle(screen, (255, 50, 50), (int(pt_x), int(pt_y)), 1)
 
     def draw_occupancy_map(self, screen, offset_x):
-        # Draw point cloud map
         for pt_x, pt_y in self.point_cloud:
-            pygame.draw.circle(screen, (255, 50, 50), (int(pt_x) + offset_x, int(pt_y)), 2)
+        # Draw point cloud map
+
+            noise_x = pt_x + (random.uniform(-2.0, 2.0))
+            noise_y = pt_y + (random.uniform(-2.0, 2.0))        
+        
+            pygame.draw.circle(screen, (255, 50, 50), (int(noise_x) + offset_x, int(noise_y)), 1)
