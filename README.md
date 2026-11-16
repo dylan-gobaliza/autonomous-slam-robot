@@ -2,21 +2,22 @@
 
 Building an autonomous 2WD indoor mapping robot for the **Arkwright Engineering Scholarship**. 
 
-Instead of using expensive LiDAR or mounting multiple static sensors, this project uses a single **HC-SR04 ultrasonic sonar sensor** mounted on an **SG90 servo motor** to execute dynamic 180-degree acoustic sweeps.
+Instead of using expensive LiDAR or mounting multiple static sensors, I'm using a **HC-SR04 ultrasonic sonar sensor** mounted on an **SG90 servo motor** to act as the main component to perform 180-degree sweeps .
 
 ---
 
-### The Challenge: High-Risk Indoor Reconnaissance
-In urban defense, search-and-rescue and disaster response situations, entering unknown or structurally compromised buildings carries an extreme human risk. While military-grade Reconnaissance UGVs exist, their high cost (£10,000–£50,000+) makes them too expensive to risk in high-attrition scenarios. Furthermore, heavy smoke, dust, or obscurants can render optical cameras and LiDAR units ineffective due to light scattering.
+### The Problem: Risky Indoor / Outdoor Reconnaissance
+In urban defence, search-and-rescue and disaster response situations, entering unknown or heavily damaged buildings carries an extreme human risk. While military-grade UGVs exist, their high cost (£10,000–£50,000+) makes them too expensive to risk in high-attrition scenarios. Furthermore, heavy smoke or dust can render optical cameras and LiDAR units redundant due to light scattering.
 
-### Case Study Grounding: Grenfell Tower & Subterranean Reconnaissance
-During complex indoor structure fires (such as Grenfell Tower, 2017) and confined urban operations, search-and-rescue teams face zero-visibility environments created by heavy smoke and particulate dust. Standard optical cameras and visual LiDAR systems fail in these conditions due to light scattering. Furthermore, deploying high-cost reconnaissance robots (£10k+) into structurally compromised spaces risks total loss of critical assets. 
+### Case Studies: Grenfell Tower & Fukushima Nuclear Accident
+During complex indoor structure fires (such as Grenfell Tower, 2017) and urban disasters (Fukushima Nuclear Accident, 2011) search-and-rescue teams risk more humans by sending their own in. Depending on the gravity of the situation - or once people have been evacuated - the UGV can be deployed to further investigate the state of the accidents.
 
-This project addresses this gap by utilizing low-cost acoustic sonar on an expendable £37.50 platform to map spatial boundaries where optical vision fails.
+This project explores this UGV by utilizing low-cost acoustic sonar on an expendable £37.50 platform to map compromised positions where optical vision fails.
 
-### The Solution: Expendable Acoustic Mapping (Sonar UGV)
-This project develops an **ultra-low-cost (~£37.50) autonomous 2WD recon platform** designed for expendable indoor mapping:
-* **Low Cost / High Attrition:** At under £40, if the robot gets damaged or lost in a high-risk area, it’s not a major financial loss compared to a £10k military UGV and it is easily replaceable.
+### The Solution: Expendable Sonar UGV
+This project explores this UGV by utilizing low-cost (£37.50) acoustic sonar on an autonomous 2WD chassis to map compromised positions where optical vision fails:
+
+* **Low Risk / High Reward:** At under £50, if the robot gets damaged or lost in a high-risk area, it’s not a major financial loss compared to a £10k military UGV and it is easily replaceable.
 * **Environmental Resilience:** Acoustic ultrasonic pulses penetrate heavy smoke and dark environments that obscure visual LiDAR and camera sensors.
 
 ---
