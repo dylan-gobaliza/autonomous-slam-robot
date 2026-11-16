@@ -81,4 +81,6 @@ Also did more research on how Arkwright Assessors look at projects and how they 
 \
 FIX: Purchase an enclosed battery holder to allow more space on top, purchase pre-soldered motors for efficiency.  
 
-* **[16/11/26]:** Formed the servo and sensor turret, and created a radar simulation to test hardware using open-source code found on youtube. (SEE ASSETS FOR PROOF)
+* **[15/11/26]:** Formed the servo and sensor turret, and created a radar simulation to test hardware using open-source code found on youtube. (SEE ASSETS FOR PROOF)
+
+* **[16/11/26]:** Finally initialised ROS2 workspace into phase2_webots and created other necessary files. Fixed .gitignore and organised README 
