@@ -24,17 +24,20 @@ This project develops an **ultra-low-cost (~£37.50) autonomous 2WD recon platfo
 ## Target Bill of Materials (BOM) & Budget
 * Arduino Uno R3 Kit (~£23)
 * ESP32 (FREE - utilised AliExpress deal) 
+* Wires (U-Shaped + M-F Pack) - (£2.35)
 
-* HC-SR04 Sonar + SG90 Servo (~£4.00)
-* HC-020K Speed Sensors / Encoders (~£2.00)
+* HC-SR04 Sonar + SG90 Servo (£2.78)
+* 2x HC-020K Speed Sensors / Encoders (£2.07)
+* TB6612FNG Motor Driver (£1.88)
+  
+* Starter 2WD Commercial Chassis  -- testing hardware and identifying flaws when using pre-made templates (£3.98)
 
-* Starter Commercial Chassis 2WD -- for testing hardware and identifying flaws when using non-specific templates (~£6.50)
-* TB6612FNG Motor Driver
-* wire pack
-* 18650 battery holder
+---
 
-* **Total Target Cost: ~£37.50**
+* **Target Budget: ~£50.00**
 * **Equivalent 2D LiDAR Platform (Estimated):** **~£160.00 – £200.00**
+
+* **TRUE COST: £36.06** 
 
 ---
 
@@ -69,11 +72,3 @@ Also did more research on how Arkwright Assessors look at projects and how they 
 * **[27/10/26]:** Finished v2_automatic and added random blurs to simulate sensor noise. Also renamed the python files to make them more readable. Started on v3 which is the final part of phase 1. v3 utilises object oriented programming which ultimately helps with the ROS2 workflow. Also created a separate folder for the OOP files.
 
 * **[29/10/26]:** Finished Phase 1 (2 months early!), updated BOM and did lots of research on next steps, i.e how does ROS2 work, what softwares are the best for circuit schematics and testing, what robot chassis I should get etc. Might start working on Phase 2 in the meantime.
-
-* **[8/11/26]:** Downloaded Linux Ubuntu, Webots and ROS2, but haven't linked it to github / repo yet. Very difficult.
-
-* **[14/11/26]:** Main robot kit arrived including chassis, sensor + servo, encoder modules, wires etc. Assembled first part of chassis and found several flaws i.e battery holder doesn't fit properly and motor wires too hard to attatch. \
-\
-FIX: Purchase an enclosed battery holder to allow more space on top, purchase pre-soldered motors for efficiency.  
-
-* **[16/11/26]:** Formed the servo and sensor turret, and created a radar simulation to test hardware using open-source code found on youtube. (SEE ASSETS FOR PROOF)
