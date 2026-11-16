@@ -72,3 +72,12 @@ Also did more research on how Arkwright Assessors look at projects and how they 
 * **[27/10/26]:** Finished v2_automatic and added random blurs to simulate sensor noise. Also renamed the python files to make them more readable. Started on v3 which is the final part of phase 1. v3 utilises object oriented programming which ultimately helps with the ROS2 workflow. Also created a separate folder for the OOP files.
 
 * **[29/10/26]:** Finished Phase 1 (2 months early!), updated BOM and did lots of research on next steps, i.e how does ROS2 work, what softwares are the best for circuit schematics and testing, what robot chassis I should get etc. Might start working on Phase 2 in the meantime.
+
+* **[8/11/26]:** Downloaded Linux Ubuntu, Webots and ROS2, but haven't linked it to github / repo yet. Very difficult.
+
+* **[14/11/26]:** Main robot kit arrived including chassis, sensor + servo, encoder modules, wires etc. Assembled first part of chassis and found several flaws i.e battery holder doesn't fit properly and motor wires too hard to attatch. \
+\
+FIX: Purchase an enclosed battery holder to allow more space on top, purchase pre-soldered motors for efficiency.  
+
+* **[16/11/26]:** Formed the servo and sensor turret, and created a radar simulation to test hardware using open-source code found on youtube. (SEE ASSETS FOR PROOF)
+* **[07/11/26]:** Revised Phase 1 by adding fuzziness to the GUI, fixed sensor noise. Bought the rest of the components for the robot and finished BOM. Downloaded Linux and I might start on the webots + ROS2 downloads. If not, I'll start the schematics on KiCAD and start validating circuitry. Might have to watch some videos on circuits and robots first though. 
